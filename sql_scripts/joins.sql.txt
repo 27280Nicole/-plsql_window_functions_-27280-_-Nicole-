@@ -1,0 +1,59 @@
+-- INNER JOIN to retrieve transactions with valid customers and products
+
+SELECT 
+    s.sale_id,
+    c.customer_name,
+    p.product_name,
+    s.sale_date,
+    s.quantity,
+    s.total_amount
+FROM sales s
+INNER JOIN customers c ON s.customer_id = c.customer_id
+INNER JOIN products p ON s.product_id = p.product_id;
+
+LEFT JOIN
+
+SELECT 
+    c.customer_id, 
+    c.customer_name, 
+    s.sale_id
+FROM customers c
+LEFT JOIN sales s ON c.customer_id = s.customer_id;
+
+RIGHT JOIN
+
+SELECT 
+    p.product_id,
+    p.product_name,
+    s.sale_id
+FROM sales s
+RIGHT JOIN products p ON s.product_id = p.product_id
+WHERE s.sale_id IS NULL;
+
+
+
+-- FULL OUTER JOIN simulation in MySQL
+SELECT c.customer_id, c.customer_name, p.product_id, p.product_name, s.sale_id
+FROM customers c
+LEFT JOIN sales s ON c.customer_id = s.customer_id
+LEFT JOIN products p ON s.product_id = p.product_id
+
+UNION
+
+SELECT c.customer_id, c.customer_name, p.product_id, p.product_name, s.sale_id
+FROM products p
+LEFT JOIN sales s ON p.product_id = s.product_id
+LEFT JOIN customers c ON s.customer_id = c.customer_id;
+
+
+
+-- SELF JOIN to compare customers in the same region
+SELECT 
+    c1.customer_id AS customer1_id,
+    c1.customer_name AS customer1_name,
+    c2.customer_id AS customer2_id,
+    c2.customer_name AS customer2_name,
+    c1.region
+FROM customers c1
+JOIN customers c2 ON c1.region = c2.region AND c1.customer_id < c2.customer_id;
+
