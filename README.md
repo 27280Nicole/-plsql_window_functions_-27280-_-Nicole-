@@ -42,41 +42,40 @@ Use AVG() OVER() with a rolling window frame to smooth short-term fluctuations a
 
 # Database Schema
 
-┌─────────────────────────┐
-│        CUSTOMERS        │
-├─────────────────────────┤
-│ customer_id (PK)        │
-│ customer_name           │
-│ region                  │
-│ registration_date       │
-│ customer_type           │
-└───────────┬─────────────┘
-            │ 1
-            │
-            │ M
-┌───────────▼─────────────┐
-│          SALES          │
-├─────────────────────────┤
-│ sale_id (PK)            │
-│ customer_id (FK)        │
-│ product_id (FK)         │
-│ sale_date               │
-│ quantity                │
-│ amount                  │
-│ payment_method          │
-└───────────┬─────────────┘
-            │ M
-            │
-            │ 1
-┌───────────▼─────────────┐
-│        PRODUCTS         │
-├─────────────────────────┤
-│ product_id (PK)         │
-│ product_name            │
-│ category                │
-│ price                   │
-│ cost                    │
-└─────────────────────────┘
+
+CUSTOMERS
+-------------------------------------------------
+customer_id (PK)
+customer_name
+region
+registration_date
+
+
+
+PRODUCTS
+-------------------------------------------------
+product_id (PK)
+product_name
+category
+price
+
+
+
+SALES
+-------------------------------------------------
+sale_id (PK)
+customer_id (FK → CUSTOMERS.customer_id)
+product_id (FK → PRODUCTS.product_id)
+sale_date
+quantity
+total_amount
+
+
+RELATIONSHIPS
+-------------------------------------------------
+CUSTOMERS (1) ────< (M) SALES
+PRODUCTS  (1) ────< (M) SALES
+
 
 # SQL JOINs Implementation
 
