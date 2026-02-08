@@ -175,10 +175,25 @@ The business should focus on high-value customers through loyalty programs and t
 
 
 ## References
+1.Oracle PL/SQL Documentation
 
-Oracle MySQL Documentation. (n.d.). https://dev.mysql.com/doc/  
-Mode Analytics SQL Tutorial. (n.d.). https://mode.com/sql-tutorial/  
-W3Schools SQL Tutorial. (n.d.). https://www.w3schools.com/sql/
+2.PostgreSQL Window Functions
+
+3.SQL Shack – Window Functions 
+
+4.Mode Analytics – SQL Window Functions
+
+5.Stack Overflow discussions on RANK, NTILE
+
+6.Academic paper: “Sales Analytics Using SQL Window Functions”
+
+7.Medium article: “Customer Segmentation in SQL”
+
+8.TutorialsPoint – SQL Aggregate & Ranking Functions
+
+9.Kaggle example datasets for retail sales analytics
+
+10.Course lecture notes
 
 ## Integrity Statement
 
